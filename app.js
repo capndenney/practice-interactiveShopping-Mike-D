@@ -4,28 +4,50 @@ const newListItem = document.getElementById('new-item');
 const shoppingList = document.getElementById('to-do-list');
 const addButton = document.getElementById('add-item');
 
-class ShoppingItem {
-    constructor()
-}
-
 addButton.addEventListener('click', function() {
-    let inputText = newListItem.value;
-    appendList(inputText);
-    alert("Item added");
-    newListItem.value = '';
+    if (newListItem.value) {
+        let inputText = newListItem.value;
+        appendList(inputText);
+        // alert("Item added");
+        newListItem.value = '';
+    }
 });
 
 function appendList (listText) {
-    shoppingList.appendChild(document.createElement(
-        'li'))
-        
+    const li = document.createElement('li');
+    const newSpan = document.createElement('span');
+        newSpan.textContent = listText;
+    const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('remove-item');
+        deleteBtn.innerText = 'Remove'
+    const edit = document.createElement('button');
+        edit.innerText = 'Edit'
+        edit.classList.add('edit-button');
+    li.classList.add('shopping-list');
+    li.appendChild(newSpan);
+    li.appendChild(edit);
+    li.appendChild(deleteBtn);
+    shoppingList.appendChild(li);
 }
 
-// addButton.addEventListener('click', function(event) {
-//     if(event.target.tagName === 'li') {
-//         addButton.classList.add('list-item')
-//         //need to define the HTML structure of the item we are 
-//     }
-// });
 
+shoppingList.addEventListener('click', function(event) {
+    if(event.target.className === 'remove-item') {
+        let confirmed = window.confirm("This will delete your item");
+        if (confirmed) {
+        event.target.parentElement.remove();
+        }
+    }
+});
 
+// function confirm() {
+//             let userConfirmed = confirm("This will delete your item?");
+
+//             if (userConfirmed) {
+//                 document.getElementById("result").innerText = "User clicked OK.";
+//                 // Perform actions if user clicked OK
+//             } else {
+//                 document.getElementById("result").innerText = "User clicked Cancel.";
+//                 // Perform actions if user clicked Cancel
+//             }
+//         }
