@@ -30,9 +30,8 @@ function appendList (listText) {
     shoppingList.appendChild(li);
 }
 
-
 shoppingList.addEventListener('click', function(event) {
-    if(event.target.className === 'remove-item') {
+    if(event.target.classList.contains('remove-item')) {
         let confirmed = window.confirm("This will delete your item");
         if (confirmed) {
         event.target.parentElement.remove();
@@ -40,14 +39,17 @@ shoppingList.addEventListener('click', function(event) {
     }
 });
 
-// function confirm() {
-//             let userConfirmed = confirm("This will delete your item?");
-
-//             if (userConfirmed) {
-//                 document.getElementById("result").innerText = "User clicked OK.";
-//                 // Perform actions if user clicked OK
-//             } else {
-//                 document.getElementById("result").innerText = "User clicked Cancel.";
-//                 // Perform actions if user clicked Cancel
-//             }
-//         }
+shoppingList.addEventListener('click', function(event) {
+    if(event.target.classList.contains('edit-button')) {
+        const editInput = document.createElement('input');
+        const curParent = event.target.parentElement;
+        const curEdit = curParent.getElementsByClassName('edit-button');
+        const textSpan = curParent.querySelector('span').value;
+            editInput.textContent = textSpan;
+            if(!(editInput.textContent === textSpan)) {
+                curEdit.innerText = 'Save';
+            }
+        editInput.setAttribute('placeholder', curText);
+        //need to store updated value, change value of text of curText, update edit button to "save", add button to cancel changes
+    }
+});
