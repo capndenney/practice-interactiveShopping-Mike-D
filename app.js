@@ -39,34 +39,6 @@ shoppingList.addEventListener('click', function(event) {
     }
 });
 
-// shoppingList.addEventListener('click', function(event) {
-//     if(event.target.classList.contains('edit-button')) {
-//         alert('button functioning');
-//         const editInput = document.createElement('input');
-//         const curParent = event.target.parentElement;
-//         const curEdit = curParent.getElementsByClassName('edit-button');
-//         const textSpan = curParent.querySelector('span').value;
-
-            
-//             if(!(editInput.value === textSpan)) { //need to trigger on when the text is changed, not 
-//                 curEdit.innerText = 'Save';
-//             }
-//         editInput.setAttribute('placeholder', textSpan);
-//         editInput.setAttribute('id', 'edit-value');
-//         editInput.setAttribute('type', 'text');
-
-
-//         editInput.textContent = textSpan;
-//         //need to store updated value, change value of text of curText, update edit button to "save", add button to cancel changes
-//     }
-// });
-
-
-/*testing hidden section in HTML, using CSS styling to save edit*/ 
-const addSection = document.getElementById('item-addition');
-const editSection = document.getElementById('edit-selected');
-const editField = document.getElementById('edit-item');
-
 shoppingList.addEventListener('click', function(event) {
     if(event.target.classList.contains('edit-button')) {
         // alert('button functioning');
