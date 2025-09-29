@@ -10,16 +10,17 @@
     <header>
         <h1>Shopping List</h1>
     </header>
-    <section>
+    <section id="item-addition" style="visibility:visible">
         <!--add item button at the top of the section-->
         <label for="new-item">New List Item:</label>
         <input type="text" id="new-item" name="new-item" placeholder="Product Name">
 
         <button id="add-item" name="add-item">Add</button>
+    </section>
         <!--list items, each one will be an <ul> for the line item, and have an accompanying button to edit-->
+    <section id="list-body">
         <h2>Current List</h2>
         <ul id="to-do-list">
-            
         </ul>
     </section>
 </body>
