@@ -41,15 +41,33 @@ shoppingList.addEventListener('click', function(event) {
 
 shoppingList.addEventListener('click', function(event) {
     if(event.target.classList.contains('edit-button')) {
+        // alert('button functioning');
         const editInput = document.createElement('input');
         const curParent = event.target.parentElement;
         const curEdit = curParent.getElementsByClassName('edit-button');
-        const textSpan = curParent.querySelector('span').value;
-            editInput.textContent = textSpan;
-            if(!(editInput.textContent === textSpan)) {
-                curEdit.innerText = 'Save';
-            }
-        editInput.setAttribute('placeholder', curText);
-        //need to store updated value, change value of text of curText, update edit button to "save", add button to cancel changes
+        const textSpan = curParent.querySelector('span');
+        editInput.value = textSpan.textContent;
+        curParent.replaceChild(editInput, textSpan);
+        event.target.innerText = 'Save';
+        event.target.classList.remove('edit-button');
+        event.target.classList.add('save-button');
+        editInput.setAttribute('id', 'edit-value');
+        editInput.setAttribute('type', 'text');
+        //change button to Save, show new input instead of current span, and change class of button to save-button
+    }
+});
+
+
+shoppingList.addEventListener('click', function(event) {
+    if(event.target.classList.contains('save-button')) {
+        alert('button functioning');
+        //need variable for edit input
+        const curEdit = curParent.getElementsByClassName('save-button');
+        const textSpan = curParent.querySelector('span').textContent;
+        textSpan = editInput.value;
+        curEdit.innerText = 'Save';
+        event.target.classList.remove('save-button');
+        event.target.classList.add('edit-button');
+        //change button to Save, show new input instead of current span, and change class of button to save-button
     }
 });
